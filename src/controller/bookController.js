@@ -62,7 +62,7 @@ const createBook = async function(req, res){
 }
 
 
-// =============================get books================================================
+// =============================get books Query param================================================
 
 const getbooks= async function(req,res){
     try{

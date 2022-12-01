@@ -1,5 +1,4 @@
 
-
 const checkInputsPresent = (value) => { return (Object.keys(value).length > 0); }
 
 const checkString = function (value) {
@@ -8,24 +7,6 @@ const checkString = function (value) {
     return true
 }
 
-
-function onlyNumbers(val){
-    if(val < 1 || val > 5){
-        return false
-    }
-    val = val.toString().split("")
-
-    for(let ele of val){
-        if(ele == "."){
-            return false
-        }
-    }
-    return true
-}
-const regexName = function(regex){
-   let re= /^[a-zA-Z ]{2,30}$/
-   return re.test(regex)
-}
 
 const validateName = (value) => { return (/^(?=.{1,50}$)[a-z]+(?:['_.\s][a-z]+)*$/i.test(value)); }
 const validateEmail = (value) => { return (/^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,3})$/.test(value)); }
@@ -38,4 +19,4 @@ const validateDate = (value) => { return (/^\d{4}-(0[1-9]|1[0-2])-(0[1-9]|[12][0
 const validateTName = (value) => { return (/^([a-zA-Z_]+\s)*[a-zA-Z_]{2,50}$/).test(value)}
 
 
-module.exports = { checkInputsPresent, checkString,validateRating, validateTName,validatePincode, validateName,  validateEmail, validatePassword, validateTitle, validateMobileNo, validateISBN, validateDate }
+module.exports = { checkInputsPresent, checkString, validateTName,validatePincode, validateName,  validateEmail, validatePassword, validateTitle, validateMobileNo, validateISBN, validateDate }
