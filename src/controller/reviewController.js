@@ -2,7 +2,7 @@
 const reviewModel = require('../model/reviewModel')
 const bookModel = require('../model/bookModel')
 const ObjectId = require('mongoose').Types.ObjectId
-const { checkInputsPresent, checkString, validateName,isvalidName } = require('../validator/validator')
+const { checkInputsPresent, checkString, validateName } = require('../validator/validator')
 const{isValidObjectId}=require("mongoose")
 
 const createReview = async (req, res) => {
@@ -97,7 +97,7 @@ const updateReview = async function (req, res) {
        }
         
        if(review){
-        if(!isvalidName(review)) return res.status(400).send({status:false,message:"please provide valid review"})
+        if(!validateName(review)) return res.status(400).send({status:false,message:"please provide valid review"})
         Obj1.review=review
        }
         
@@ -137,3 +137,30 @@ const deletereview= async function(req,res){
     }
 
 module.exports={createReview,deletereview,updateReview}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

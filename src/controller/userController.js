@@ -1,6 +1,6 @@
 const userModel= require("../model/userModel")
 const Jwt = require('jsonwebtoken')
-const { checkInputsPresent, checkString, validateName, validateEmail, validatePassword, validateTitle, validateMobileNo } = require('../validator/validator')
+const { checkInputsPresent, validatePincode,checkString, validateName, validateEmail, validatePassword, validateTitle, validateMobileNo } = require('../validator/validator')
 
 
 const createUser= async function(req,res){
@@ -39,9 +39,9 @@ const createUser= async function(req,res){
             if(!Object.keys(address).length) return res.status(400).send({status:false,message:"Please provide Street/city/pincode"})
             if(!address.street || address.street=="") return res.status(400).send({status:false,message:"Please provide Street"})
             if(!address.city || address.city=="") return res.status(400).send({status:false,message:"Please provide city"})
-            if(!address.pincode || address.pincode=="") return res.status(400).send({status:false,message:"Please provide pincode"})
+            if(!address.pincode || !validatePincode(address.pincode)) return res.status(400).send({status:false,message:"Please provide valid pincode"})
         }
-       
+        
     let obj = await userModel.create(data)
     res.status(201).send({status:true,data:obj})
     }
